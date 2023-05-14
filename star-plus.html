@@ -95,7 +95,7 @@ Fútbol Libre TV
                                     hora = '<button type="button" class="btn btn-block btn-dark">HOY | <span class="t">' + status + '</span> hs</button>';
                                 }
                                 //console.log(status);
-                                content += '<div class="w3-quarter"><a href="' + url + '"><div class="card"><img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/star/' + obj['img'] + '/scale?width=500&aspectRatio=1.78&format=jpeg" class="card-img-top" alt="image" /><div class="card-body">' + hora + '<h3>' + obj['title'] + '</h3><h5 class="card-subtitle">' + obj['league'] + '</h5></div></div></a></div></div>';
+                                content += '<div class="w3-quarter"><a href="' + url + '"><div class="card"><img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/star/' + obj['img'] + '/scale?width=500&aspectRatio=1.78&format=jpeg" class="card-img-top" alt="image" /><div class="w3-hover-opacity">' + hora + '<h3>' + obj['title'] + '</h3><h5 class="w3-card-4">' + obj['league'] + '</h5></div></div></a></div></div>';
                             }
                             $("#eventos").html(content);
                             guardaHorario();
