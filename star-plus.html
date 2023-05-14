@@ -95,7 +95,7 @@ function eventos() {
                                     hora = '<button type="button" class="btn btn-dark me-1 mb-1">HOY | <span class="t">' + status + '</span> hs</button>';
                                 }
                                 //console.log(status);
-                                content += '<div class="w3-quarter"><a href="' + url + '"><div class="card"><img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/star/' + obj['img'] + '/scale?width=500&aspectRatio=1.78&format=jpeg" class="card-img-top" alt="image" /><div class="card-body">' + hora + '<h3>' + obj['title'] + '</h3><h5 class="card-subtitle">' + obj['league'] + '</h5></div></div></a></div></div>';
+                                content += '<div class="w3-quarter"><a href="' + obj['url'] + '"><img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/star/' + obj['img'] + '/scale?width=500&aspectRatio=1.78&format=jpeg" alt="Star+" style="width:100%" class="w3-hover-opacity"></a><a class="btn btn-block btn-' + color + '" href="' + obj['url'] + '">' + status + '</a> <div class="w3-card-4"><p><b>' + obj['league'] + '</b></p><p>' + obj['title'] + '</p></div></div>';
                             }
                             $("#eventos").html(content);
                             guardaHorario();
