@@ -66,15 +66,25 @@ function eventos()
 	var x = Math.random().toString(36).substring(7);
 
 	$.ajax({
-		url : "https://api.codetabs.com/v1/proxy/?quest=https://futbollibrehd.com/star-plus/eventos.json?"+x,
+		url : "https://api.codetabs.com/v1/proxy/?quest=https://canales.online/star-plus/eventos.json?"+x,
 		type : "get",
 		success: function (arr) {
 			var content = '';
 			
-			for (var i = 0; i < arr.length; i++)
-			{
-				if (i%4==0)
-				{
+			for (var i = 0; i < arr.length; i++) {
+				var obj = arr[i];
+                                url = obj['url'];
+                                if (url !== "#") {
+                                    let nurl = url.replace("/embed/eventos/?r=", "");
+                                    nurl = atob(nurl);
+                                    let wurl = nurl.replace("https://techflower.bio/star_jwp.html?get=https://live-ftc-na-south-2.media.starott.com/", "");
+                                    wurl = "https://psinicat.wtf/star.html?get=https://linear-spc-sa-east-1.media.starott.com/" + wurl;
+                                    let furl = btoa(wurl);
+                                    console.log(furl);
+                                    //console.log('Link está listo: ' + furl);
+                                    // Concatenamos link ya tratado
+                                    url = "//futbollibrehd.online/eventos.html?r=" + furl;
+				} else {
 					if (i != 0)
 						content += '</div>';
 					
