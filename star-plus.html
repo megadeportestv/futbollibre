@@ -85,30 +85,35 @@ function eventos() {
                                 } else {
                                     //console.log('Link no está listo: ' + url);
                                 }
-                                status = obj['status'];
-                                if (status == "EN VIVO") {    
-                                 hora = '<button type="button" class="btn btn-danger me-1 mb-1">EN VIVO</button>';
-                                 
-                                } else if (status == "FINALIZADO") {
-                                    hora = '<button type="button" class="btn btn-dark me-1 mb-1">FINALIZADO</button>';
-                                } else {
-                                    hora = '<button type="button" class="btn btn-dark me-1 mb-1">HOY | <span class="t">' + status + '</span> hs</button>';
-                                }
-                                //console.log(status);
-                                content += '<div class="w3-quarter"><a href="' + obj['url'] + '"><img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/star/' + obj['img'] + '/scale?width=500&aspectRatio=1.78&format=jpeg" alt="Star+" style="width:100%" class="w3-hover-opacity"></a><a class="btn btn-block btn-' + color + '" href="' + obj['url'] + '">' + status + '</a> <div class="w3-card-4"><p><b>' + obj['league'] + '</b></p><p>' + obj['title'] + '</p></div></div>';
-                            }
-                            $("#eventos").html(content);
-                            guardaHorario();
-                            dT();
-                        }
-                    })
-                }
+                                if (obj['status'] == "FINALIZADO" || obj['status'] == "EN VIVO")
+					status = obj['status'];
+				else
+					status = 'HOY | <span class="t">' + obj['status'] + '</span> hs';
+			
+				if (status == "EN VIVO")
+					color = "danger";
+				else
+					color = "dark";
+					
+				content += '<div class="w3-quarter"><a href="' + obj['url'] + '"><img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/star/' + obj['img'] + '/scale?width=500&aspectRatio=1.78&format=jpeg" alt="Star+" style="width:100%" class="w3-hover-opacity"></a><a class="btn btn-block btn-' + color + '" href="' + obj['url'] + '">' + status + '</a> <div class="w3-card-4"><p><b>' + obj['league'] + '</b></p><p>' + obj['title'] + '</p></div></div>';
+				
+				if (i == arr.length-1)
+					content += '</div>';
+			}
+			
+			$("#eventos").html(content);
+			
+			guardaHorario();
+			dT();
+		}
+	})
+}
 
-                eventos();
+eventos();
 
-                window.setInterval(function () {
-                    eventos();
-                }, 60000);
+window.setInterval(function() {
+	eventos();
+}, 60000);
 </script>
 
 <footer class="pt-4 my-md-5 pt-md-5 border-top">
