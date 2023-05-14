@@ -61,16 +61,18 @@ Fútbol Libre TV
 <div class="sharethis-inline-share-buttons"></div>
 
 <script>
-                function eventos() {
-                    var x = Math.random().toString(36).substring(7);
+function eventos()
+{
+	var x = Math.random().toString(36).substring(7);
 
-                    $.ajax({
-                        url: "https://api.codetabs.com/v1/proxy/?quest=https://canales.online/star-plus/eventos.json?" + x,
-                        type: "get",
-                        success: function (arr) {
-                            var content = '';
-                            for (var i = 0; i < arr.length; i++) {
-                                var obj = arr[i];
+	$.ajax({
+		url : "https://api.codetabs.com/v1/proxy/?quest=https://canales.online/star-plus/eventos.json?"+x,
+		type : "get",
+		success: function (arr) {
+			var content = '';
+			
+			for (var i = 0; i < arr.length; i++) {
+				var obj = arr[i];
                                 url = obj['url'];
                                 if (url !== "#") {
                                     let nurl = url.replace("/embed/eventos/?r=", "");
@@ -81,11 +83,18 @@ Fútbol Libre TV
                                     console.log(furl);
                                     //console.log('Link está listo: ' + furl);
                                     // Concatenamos link ya tratado
-                                    url = "//megadeportes.xyz/eventos.html?r=" + furl;
-                                } else {
-                                    //console.log('Link no está listo: ' + url);
-                                }
-                                status = obj['status'];
+                                    url = "//futbollibrehd.online/eventos.html?r=" + furl;
+				} else {
+					if (i != 0)
+						content += '</div>';
+					
+					content += '<div class="w3-row-padding w3-padding-16 w3-center" id="copa">';
+				}
+					
+				var obj = arr[i];
+		
+				if (obj['status'] == "FINALIZADO" || obj['status'] == "EN VIVO")
+					status = obj['status'];
 				else
 					status = 'HOY | <span class="t">' + obj['status'] + '</span> hs';
 			
@@ -113,7 +122,7 @@ eventos();
 window.setInterval(function() {
 	eventos();
 }, 60000);
-            </script>
+</script>
 
 <footer class="pt-4 my-md-5 pt-md-5 border-top">
 <div class="row">
