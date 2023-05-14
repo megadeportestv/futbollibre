@@ -60,56 +60,7 @@ Fútbol Libre TV
 
 <div class="sharethis-inline-share-buttons"></div>
 
-<script>
-                function eventos() {
-                    var x = Math.random().toString(36).substring(7);
 
-                    $.ajax({
-                        url: "https://api.codetabs.com/v1/proxy/?quest=https://canales.online/star-plus/eventos.json?" + x,
-                        type: "get",
-                        success: function (arr) {
-                            var content = '';
-                            for (var i = 0; i < arr.length; i++) {
-                                var obj = arr[i];
-                                url = obj['url'];
-                                if (url !== "#") {
-                                    let nurl = url.replace("/embed/eventos/?r=", "");
-                                    nurl = atob(nurl);
-                                    let wurl = nurl.replace("https://techflower.bio/star_jwp.html?get=https://live-ftc-na-south-2.media.starott.com/", "");
-                                    wurl = "https://psinicat.wtf/star.html?get=https://linear-spc-sa-east-1.media.starott.com/" + wurl;
-                                    let furl = btoa(wurl);
-                                    console.log(furl);
-                                    //console.log('Link está listo: ' + furl);
-                                    // Concatenamos link ya tratado
-                                    url = "//megadeportes.xyz/eventos.html?r=" + furl;
-                                } else {
-                                    //console.log('Link no está listo: ' + url);
-                                }
-                                status = obj['status'];
-                                if (status == "EN VIVO") {    
-                                 hora = '<button type="button" class="btn btn-block btn-danger">EN VIVO</button>';
-                                 
-                                } else if (status == "FINALIZADO") {
-                                    hora = '<button type="button" class="btn btn-block btn-dark">FINALIZADO</button>';
-                                } else {
-                                    hora = '<button type="button" class="btn btn-block btn-dark">HOY | <span class="t">' + status + '</span> hs</button>';
-                                }
-                                //console.log(status);
-                                content += '<div class="w3-quarter"><a href="' + obj['url'] + '"><img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/star/' + obj['img'] + '/scale?width=500&aspectRatio=1.78&format=jpeg" alt="Star+" style="width:100%" class="w3-hover-opacity"></a><a class="btn btn-block btn-' + color + '" href="' + obj['url'] + '">' + status + '</a> <div class="w3-card-4"><p><b>' + obj['league'] + '</b></p><p>' + obj['title'] + '</p></div></div>';
-                            }
-                            $("#eventos").html(content);
-                            guardaHorario();
-                            dT();
-                        }
-                    })
-                }
-
-                eventos();
-
-                window.setInterval(function () {
-                    eventos();
-                }, 60000);
-            </script>
 
 <footer class="pt-4 my-md-5 pt-md-5 border-top">
 <div class="row">
