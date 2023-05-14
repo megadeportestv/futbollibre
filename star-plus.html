@@ -61,18 +61,16 @@ Fútbol Libre TV
 <div class="sharethis-inline-share-buttons"></div>
 
 <script>
-function eventos()
-{
-	var x = Math.random().toString(36).substring(7);
+                function eventos() {
+                    var x = Math.random().toString(36).substring(7);
 
-	$.ajax({
-		url : "https://api.codetabs.com/v1/proxy/?quest=https://canales.online/star-plus/eventos.json?"+x,
-		type : "get",
-		success: function (arr) {
-			var content = '';
-			
-			for (var i = 0; i < arr.length; i++) {
-				var obj = arr[i];
+                    $.ajax({
+                        url: "https://api.codetabs.com/v1/proxy/?quest=https://canales.online/star-plus/eventos.json?" + x,
+                        type: "get",
+                        success: function (arr) {
+                            var content = '';
+                            for (var i = 0; i < arr.length; i++) {
+                                var obj = arr[i];
                                 url = obj['url'];
                                 if (url !== "#") {
                                     let nurl = url.replace("/embed/eventos/?r=", "");
@@ -83,46 +81,35 @@ function eventos()
                                     console.log(furl);
                                     //console.log('Link está listo: ' + furl);
                                     // Concatenamos link ya tratado
-                                    url = "//eventos.html?r=" + furl;
-				} else {
-					if (i != 0)
-						content += '</div>';
-					
-					content += '<div class="w3-row-padding w3-padding-16 w3-center" id="copa">';
-				}
-					
-				var obj = arr[i];
-		
-				if (obj['status'] == "FINALIZADO" || obj['status'] == "EN VIVO")
-					status = obj['status'];
-				else
-					status = 'HOY | <span class="t">' + obj['status'] + '</span> hs';
-			
-				if (status == "EN VIVO")
-					color = "danger";
-				else
-					color = "dark";
-					
-				content += '<div class="w3-quarter"><a href="' + obj['url'] + '"><img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/star/' + obj['img'] + '/scale?width=500&aspectRatio=1.78&format=jpeg" alt="Star+" style="width:100%" class="w3-hover-opacity"></a><a class="btn btn-block btn-' + color + '" href="' + obj['url'] + '">' + status + '</a> <div class="w3-card-4"><p><b>' + obj['league'] + '</b></p><p>' + obj['title'] + '</p></div></div>';
-				
-				if (i == arr.length-1)
-					content += '</div>';
-			}
-			
-			$("#eventos").html(content);
-			
-			guardaHorario();
-			dT();
-		}
-	})
-}
+                                    url = "//megadeportes.xyz/eventos.html?r=" + furl;
+                                } else {
+                                    //console.log('Link no está listo: ' + url);
+                                }
+                                status = obj['status'];
+                                if (status == "EN VIVO") {    
+                                 hora = '<button type="button" class="btn btn-block btn-danger">EN VIVO</button>';
+                                 
+                                } else if (status == "FINALIZADO") {
+                                    hora = '<button type="button" class="btn btn-block btn-dark">FINALIZADO</button>';
+                                } else {
+                                    hora = '<button type="button" class="btn btn-block btn-dark">HOY | <span class="t">' + status + '</span> hs</button>';
+                                }
+                                //console.log(status);
+                                content += '<div class="w3-quarter"><a href="' + url + '"><div class="card"><img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/star/' + obj['img'] + '/scale?width=500&aspectRatio=1.78&format=jpeg" class="card-img-top" alt="image" /><div class="card-body">' + hora + '<h3>' + obj['title'] + '</h3><h5 class="card-subtitle">' + obj['league'] + '</h5></div></div></a></div></div>';
+                            }
+                            $("#eventos").html(content);
+                            guardaHorario();
+                            dT();
+                        }
+                    })
+                }
 
-eventos();
+                eventos();
 
-window.setInterval(function() {
-	eventos();
-}, 60000);
-</script>
+                window.setInterval(function () {
+                    eventos();
+                }, 60000);
+            </script>
 
 <footer class="pt-4 my-md-5 pt-md-5 border-top">
 <div class="row">
