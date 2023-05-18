@@ -22,7 +22,7 @@
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
-<link href="/bootstrap.css" rel="stylesheet">
+<link href="/bootstrap.css?fl" rel="stylesheet">
 <link href="/portada.css" rel="stylesheet">
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <meta http-Equiv="Cache-Control" Content="no-cache" />
@@ -53,15 +53,12 @@
 <title>Reproductor - Fútbol Libre TV</title>
 </head>
 <body>
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-<a class="my-0 mr-md-auto font-weight-normal fl" rel="home" href="https://futbollibrehd.online">
-Fútbol Libre TV
-</a>
-
-<a class="btn btn-outline-fl" rel="home" href="https://futbollibrehd.online">
-<img src="https://futbollibrehd.online/logo-futbolLibre.webp" alt="Logo de Fútbol Libre TV" width="25" height="25">
-</a>
-</div>
+<div id="navbar"></div>
+<script>
+            $(document).ready(function() {
+                $("#navbar").load("/navbar.html?fl");
+            });
+         </script>
 <div class="container">
 <div class="jumbotron">
 <div class="row">
