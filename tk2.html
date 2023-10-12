@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex" />
+<style type="text/css">
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  </style>
+<script src="https://content.jwplatform.com/libraries/KB5zFt7A.js"></script>
+<script> jwplayer.key='XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo';</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div id="player"></div>
+<script type="text/javascript">
+  $.getJSON('https://corsproxy.io/?url=https://tcnt.golf/json/capturado.json', function(data) {
+    var mpd = data.mpd;
+    var playerInstance=jwplayer("player");
+    playerInstance.setup({
+      playlist: [{
+        "title": "Todo Pelota TV ",
+        "description": "",
+        "image": "#",
+        "sources": [
+          {
+            "default": false,
+            "type": "dash",
+            "file": mpd,
+            "drm": {
+              "clearkey": {
+                "keyId": "d677a19db3a05a019d8683b9250cbc0f",
+                "key": "e2756e96d7d9d63729b645a6139cb513"
+              }
+            },
+            "label": "0"
+          }
+        ]
+      }],
+      width: "100%",
+      height: "100%",
+      aspectratio: "16:9",
+      autostart: true,
+      cast: {},
+      sharing: {}
+    });
+  });
+  </script>
+</body>
+</html>
